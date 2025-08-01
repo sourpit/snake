@@ -1,7 +1,9 @@
+.PHONY: all clean
 
-snake: snake.o
-	ld -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -L/usr/local/lib -lSystem -o snake snake.o
+all: clean snake
 
-snake.o: snake.asm
-	nasm -fmacho64 -o snake.o snake.asm
+snake:
+	gcc -g -Wall -pedantic -o snake snake.c
 
+clean:
+	rm -f snake
